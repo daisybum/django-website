@@ -307,26 +307,26 @@ gantt
     title 인디 음악 블로그 개발 일정
     dateFormat  YYYY-MM-DD
     section 기획
-    프로젝트 계획 및 설계    :done,    des1, 2024-03-01,1d
+    프로젝트 계획 및 설계    :done,    des1, 2024-03-07,1d
     section 디자인
-    UI/UX 설계 초안 작성     :active,  des2, after des1, 2d
+    UI/UX 설계 초안 작성     :active,  des2, 2024-03-08,1d
     section 개발 환경 설정
-    개발 환경 설정          :         dev1, after des2, 1d
+    개발 환경 설정          :         dev1, 2024-03-09,1d
     section 프론트엔드
-    페이지 레이아웃 구성    :         fe1, after des2, 2d
-    동적 콘텐츠 렌더링      :         fe2, after fe1, 2d
-    사용자 인터랙션 추가    :         fe3, after fe2, 1d
+    페이지 레이아웃 구성    :         fe1, 2024-03-08,2d
+    동적 콘텐츠 렌더링      :         fe2, 2024-03-10,2d
+    사용자 인터랙션 추가    :         fe3, 2024-03-12,1d
     section 백엔드
-    데이터 모델 구현        :         be1, after dev1, 1d
-    Django 관리자 페이지 설정 :       be2, after be1, 1d
-    아티스트 소개 및 리뷰 기능  :      be3, after be2, 1d
-    커뮤니티 포럼 및 이벤트 정보 기능: be4, after be3, 1d
+    데이터 모델 구현        :         be1, 2024-03-09,1d
+    Django 관리자 페이지 설정 :       be2, 2024-03-10,1d
+    아티스트 소개 및 리뷰 기능  :      be3, 2024-03-11,1d
+    커뮤니티 포럼 및 이벤트 정보 기능: be4, 2024-03-12,1d
     section 테스팅 및 디버깅
-    단위 테스트 및 UX 테스트 :        test1, after be4, 1d
-    버그 수정 및 최적화     :         test2, after test1, 1d
+    단위 테스트 및 UX 테스트 :        test1, 2024-03-13,1d
+    버그 수정 및 최적화     :         test2, 2024-03-13,1d
     section 배포 준비 및 문서화
-    문서화                  :         doc1, after test2, 1d
-    배포 설정 및 초기 배포  :         deploy1, after doc1, 1d
+    문서화                  :         doc1, 2024-03-13,1d
+    배포 설정 및 초기 배포  :         deploy1, 2024-03-13,1d
 ```
 
 * 아래 WBS는 엑셀을 이용했습니다. 양식은 [다운로드](./WBS_sample.xlsx) 받아 사용하세요. (출처 : https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/ExcelGeneral/204594/1/WBS_sample.xlsx)
