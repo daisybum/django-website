@@ -1,13 +1,3 @@
-- 해당 repo는 sample repo입니다. 실제 사용되고 있는 repo가 아닙니다.
-- 해당 repo 내용으로 작성한 [sample repo](https://github.com/paullabkorea/github_blog) 링크입니다. 이 프로젝트는 실제 위니브에서 진행중인 프로젝트의 origin입니다.
-- 블러 처리되어 있는 이미지가 일부 있을 수 있습니다.
-- 모든 템플릿이 동일한 템플릿이 되지 않도록 적절한 수정이 필요합니다.
-- GitHub Project나 GitHub Wiki를 사용하시는 것도 좋습니다.
-- 스웨거와 같은 서비스를 이용할 경우 캡쳐된 이미지가 있어야 합니다.
-- Notion으로 WBS 등을 작성하였으면 노션 링크가 아니라 내용이나 캡쳐 이미지가 들어가도록 해주세요.(URL 이동 최소화)
-- ChatGPT에게 머메이드로 요구하세요. 대부분 빠르게 만족할만한 퀄리티를 얻을 수 있습니다.
-
-  
 # 인디 음악 블로그
 
 ## 블로그 소개
@@ -50,25 +40,15 @@
 ## 2. 개발 환경 및 배포 URL
 ### 2.1 개발 환경
 - Web Framework
-  - Django 3.x (Python 3.8)
-- 서비스 배포 환경
-  - Amazon Lightsail
-...중략...
-### 2.2 배포 URL
-- https://www.studyin.co.kr/
-- 테스트용 계정
-  ```
-  id : test@test.test
-  pw : test11!!
-  ```
+  - Django 5.x (Python 3.12)
+
 
 ### 2.3 URL 구조(모놀리식)
 - main
 
-| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
-|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| main      | '/'                                        | home              | main/home.html                        | 홈화면          |
-| main      | '/about/'                                  | about             | main/about.html                       | 소개화면               |
+| App       | URL                                        | Views Function | HTML File Name  | Note           |
+|-----------|--------------------------------------------|----------------|-----------------|----------------|
+| main      | '/'                                        | Main           | blog/index.html | 홈화면          |
 
 
 - accounts
@@ -77,228 +57,188 @@
 |-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
 | accounts  | 'register/'                                | register          | accounts/register.html                |회원가입         |
 | accounts  | 'login/'                                   | login             | accounts/login.html                   |로그인           |
-| accounts  | 'logout/'                                  | logout            | accounts/logout.html                  |로그아웃         |
-| accounts  | 'profile/'                                 | profile           | accounts/profile.html                 | 비밀번호변경기능 / <br>프로필 수정/ 닉네임추가 |
-
-
-- boardapp
-
-| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
-|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| board     | 'board/'                                   | board             | boardapp/post_list.html               | 게시판 목록 |
-| board     | 'board/<int:pk>/'                          | post_detail       | boardapp/post_detail.html            | 게시글 상세보기 |
-| board     | 'board/write/'                             | post_write        | boardapp/post_write.html             | 게시글 작성 |
-| board     | 'board/edit/<int:pk>/'                     | post_edit         | boardapp/post_edit.html              | 게시글 수정 |
-| board     | 'board/delete/<int:pk>/'                   | post_delete       | boardapp/post_delete.html            | 게시글 삭제 |
-| board     | 'board/<int:pk>/comment/'                  | comment_create    | boardapp/comment_form.html           | 댓글 작성 |
-| board     | 'board/<int:pk>/comment/<br><int:comment_pk>/edit/' | comment_edit | boardapp/comment_form.html           | 댓글 수정 |
-| board     | 'board/<int:pk>/comment/<br><int:comment_pk>/delete/' | comment_delete | boardapp/comment_<br>confirm_delete.html| 댓글 삭제 |
 
 
 - blog
 
+| App       | URL                                        | Views Function    | HTML File Name                       | Note           |
+|-----------|--------------------------------------------|-------------------|--------------------------------------|----------------|
+| blog      | 'blog/'                                    | blog              | blog/blog.html                       |갤러리형 게시판 메인 화면  |
+| blog      | 'blog/<int:pk>/'                           | post              | blog/post.html                       |상세 포스트 화면    |
+| blog      | 'blog/write/'                              | write             | blog/write.html                      | 카테고리 지정, 사진업로드,<br> 게시글 조회수 반영|
+| blog      | 'blog/edit/<int:pk>/'                      | edit              | blog/edit.html                       | 게시물목록보기 |
+| blog      | 'blog/delete/<int:pk>/'                    | delete            | blog/delete.html                     | 삭제 화면      |
+| blog      | 'blog/search/'                             | search            | base.html                            | 주제와 카테고리에 따라 검색,<br> 시간순에 따라 정렬|
+| blog      | 'post/<int:post_pk>/comment/'              | comment_new       | blog/comment_form.html               | 댓글 입력 폼     |
 
-| App       | URL                                        | Views Function    | HTML File Name                        | Note           |
-|-----------|--------------------------------------------|-------------------|---------------------------------------|----------------|
-| blog      | 'blog/'                                    | blog              | blog/blog.html                        |갤러리형 게시판 메인 화면  |
-| blog      | 'blog/<int:pk>/'                           | post              | blog/post.html                        |상세 포스트 화면    |
-| blog      | 'blog/write/'                              | write             | blog/write.html                       | 카테고리 지정, 사진업로드,<br> 게시글 조회수 반영|
-| blog      | 'blog/edit/<int:pk>/'                      | edit              | blog/edit.html                        | 게시물목록보기 |
-| blog      | 'blog/delete/<int:pk>/'                    | delete            | blog/delete.html                      | 삭제 화면      |
-| blog      | 'blog/search/'                             | search            | blog/search.html                      | 주제와 카테고리에 따라 검색,<br> 시간순에 따라 정렬|
-| blog      | 'post/<int:post_pk>/comment/'              | comment_new       | blog/comment_form.html                | 댓글 입력 폼     |
-| blog      | 'post/<int:post_pk>/comment/<br><int:parent_pk>/' | reply_new    | blog/comment_form.html                | 대댓글 폼      |
-| blog      | 'post/<int:pk>/like/'                      | like_post         | blog/post.html                        |좋아요를 누르면 blog/post로 Redirect됨|
-| blog      | 'comment/<int:pk>/update/'                 | comment_update    | blog/comment_form.html                |댓글 업데이터 경로   |
-| blog      | 'comment/<int:pk>/delete/'                 | comment_delete    | blog/comment_<br>confirm_delete.html      |댓글 삭제 폼    |
-
-### 2.4 URL 구조(마이크로식)
-
-* views의 이름과 views에 믹스인 한 것이 있으면 함께 언급하면 좋습니다.
-
-|app:accounts|HTTP Method|설명|로그인 권한 필요|작성자 권한 필요|
-|:-|:-|:-|:-:|:-:|
-|signup/|POST|회원가입|||
-|login/|POST|로그인|||
-|logout/|POST|로그아웃| ✅ ||
-|\<int:pk\>/|GET|프로필 조회| ✅ ||
-|\<int:pk\>/|PUT|프로필 수정| ✅ | ✅ |
-|\<int:pk\>/|DELETE|회원 탈퇴| ✅ | ✅ |
-|status/|GET|로그인 상태 확인|||
-|token/refresh/|POST|만료 토큰 재발급|||
-<br>  
-
-|app:blog|HTTP Method|설명|로그인 권한 필요|작성자 권한 필요|
-|:-|:-|:-|:-:|:-:|
-|list/|GET|게시판 리스트| ✅ ||
-|create/|POST|게시물 작성| ✅ ||
 <br>
 
-|app:interview|HTTP Method|설명|로그인 권한 필요|작성자 권한 필요|
-|:-|:-|:-|:-:|:-:|
-|question/|POST|면접 문제 요청| ✅ ||
-|grading/|POST|면접 문제 채점| ✅ ||
-|total/|POST|면접 점수 통계| ✅ ||
-<br>
-
-* 아래와 같이 표현할 수도 있습니다.
-
-| App       | Method        | URL                               | Views Class        | Note           |
-|-----------|---------------|-----------------------------------|------------------- |----------------|
-| blog  | GET   | '/blog/posts/'                         |   PostViewSet                 |게시글 목록 |
-| blog  | POST   | '/blog/posts/'                       |   PostViewSet                 |게시글 생성 / ChatGPT API 요청 |
-| blog  | GET   | '/blog/posts/{post_id}/'                |    PostViewSet       |게시글 상세보기 / 게시글 조회수 증가 |
-| blog  | PATCH   | '/blog/posts/{post_id}/'                  |   PostViewSet    |게시글 수정 |
-| blog  | DELETE   | '/blog/posts/{post_id}/'                   |  PostViewSet    |게시글 삭제 |
-| blog  | POST   | '/blog/posts/{post_id}/like/'                   |   PostViewSet    |게시글 좋아요 증가|
-| blog  | GET   | '/blog/posts/{post_id}/comments/'                   |   CommentViewSet    | 게시물의 댓글 목록 |
-| blog  | POST   | '/blog/posts/{post_id}/comments/'                   |   CommentViewSet    | 게시물의 댓글 생성 |
-| blog  | GET   | '/blog/posts/{post_id}/comments/{comment_id}/'       |   CommentViewSet    | 게시물의 특정 댓글 보기 |
-| blog  | PATCH   | '/blog/posts/{post_id}/comments/{comment_id}/'       |   CommentViewSet    | 게시물의 특정 댓글 수정 |
-| blog  | DELETE   | '/blog/posts/{post_id}/comments/{comment_id}/'       |   CommentViewSet    | 게시물의 특정 댓글 삭제 |
-<br>
-
-|URL|페이지 설명|GET|POST|PUT|DELETE|로그인 권한| 작성자 권한|
-|------|---|:---:|:---:|:---:|:---:|:---:|:---:|
-|/accounts/login|로그인| |✔️| | | | |
-|/accounts/logout|로그아웃| |✔️| | | | |
-|/accounts/signup|회원가입| |✔️| | | | |
-|/accounts/profile|프로필 <br> 프로필 수정 <br> 회원 탈퇴|✔️<br> <br> <br>| |✔️|<br><br>✔️|✔️ <br> ✔️ <br> ✔️|<br> ✔️ <br> ✔️
-|/accounts/token/refresh|토큰갱신| |✔️| | | | |
-|/board|게시글 목록 <br> 게시글 생성|✔️<br><br>|<br>✔️| | | <br> ✔️| |
-|/board/{postid}|게시글 상세 <br> 게시글 수정 <br> 게시글 삭제|✔️<br><br><br>| |✔️|<br><br>✔️| <br> ✔️ <br> ✔️ | <br> ✔️ <br> ✔️
-<br>
 
 ## 3. 요구사항 명세와 기능 명세
-- https://www.mindmeister.com/ 등을 사용하여 모델링 및 요구사항 명세를 시각화하면 좋습니다.
-- 이미지는 셈플 이미지입니다.
-<img src="map.png" width="100%">
-- 머메이드를 이용해 시각화 하였습니다.
+ - 메인페이지 구현
+   - 페이지 제목과 블로그 입장하기 버튼 표시
+   - 회원가입/로그인 버튼 제공
+   - 회원가입 버튼 클릭 시 회원가입 페이지로 이동
+   - 로그인 버튼 클릭 시 로그인 페이지로 이동
+
+ - 회원가입 기능 구현
+   - 회원가입 페이지 제공
+   - id와 password 입력 받음
+
+ - 로그인 기능 구현
+   - 로그인 페이지 제공
+   - id와 password 입력 받음
+
+ - 게시글 작성 기능 구현
+   - 로그인한 사용자만 이용 가능
+   - 게시글 제목과 내용 작성 페이지 제공
+   - 사진 업로드 가능
+   - 게시글 저장 및 목록에 표시
+   - 게시글 조회수 증가
+
+ - 게시글 목록 기능 구현
+   - 모든 사용자가 게시한 블로그 게시글 제목 확인 가능
+ 
+ - 게시글 상세보기 기능 구현
+   - 게시글의 제목/내용 확인 가능
+ 
+ - 게시글 검색 기능 구현
+   - 주제와 태그에 따라 검색 가능
+   - 검색 결과 시간순으로 정렬 가능
+
+ - 게시글 수정 기능 구현
+   - 로그인한 사용자만 이용 가능
+   - 본인의 게시글만 수정 가능
+   - 게시글 제목과 내용 수정 페이지 제공
+
+ - 게시글 삭제 기능 구현
+   - 로그인한 사용자만 이용 가능
+   - 본인의 게시글만 삭제 가능
+   - 삭제 후 게시글 목록으로 이동 및 삭제된 게시글 접근 불가능 페이지 표시
+
+ - 회원 관련 추가 기능
+   - 비밀번호 변경 기능
+   - 프로필 수정 기능
+   - 닉네임 추가 기능
+
+ - 댓글 기능
+   - 댓글 추가
+   - 댓글 삭제
+   - 대댓글 기능
+   - 댓글 수정 기능
+
+ - 부가 기능
+   - 정적 파일 모으기 (collectstatic)
+   - 번역 기능 (en, kr)
   
 ```mermaid
     sequenceDiagram
-    actor A as client
-    participant B as Web
-    participant C as server
-    A->>+B: 로그인 요청
-    B->>+A: 로그인 정보 요구
-    A->>+C: id, pw 전달
-    alt 로그인 정보가 있고 로그인 정보가 맞을 시
-    C->>+B: access token, refresh token 전달
-    B->>+A: 로그인 성공
-    else 로그인 정보가 없거나 정보가 맞지 않을시
-    C->>+B: False
-    B->>+A: 로그인 실패
-    end
+    participant User as 사용자
+    participant Web as 웹 서버
+    participant Server as 백엔드 서버
+
+    User->>+Web: 회원가입
+    Web->>+Server: 회원가입 정보 전송
+    Server-->>-Web: 회원가입 결과 전송
+    Web-->>-User: 회원가입 결과 메시지
+
+    User->>+Web: 로그인
+    Web->>+Server: 로그인 정보 전송
+    Server-->>-Web: 로그인 결과 전송
+    Web-->>-User: 로그인 결과 메시지
+
+    User->>+Web: 게시글 작성
+    Web->>+Server: 게시글 정보 전송
+    Server-->>-Web: 게시글 저장 결과 전송
+    Web-->>-User: 게시글 작성 결과 메시지
+
+    User->>+Web: 기능 요청
+    Web->>+Server: 요청 전송
+    Server-->>-Web: 처리 결과 전송
+    Web-->>-User: 결과 메시지
 ```
 
 ## 4. 프로젝트 구조와 개발 일정
 ### 4.1 프로젝트 구조
 - 해당 프로젝트에서 폴더 트리 잘 다듬어 사용하세요. 필요하다면 주석을 달아주세요.
-📦tutorial  
- ┣ 📂accounts  
- ┃ ┣ 📂migrations  
- ┃ ┣ 📂__pycache__  
- ┃ ┣ 📜admin.py  
- ┃ ┣ 📜apps.py  
- ┃ ┣ 📜forms.py  
- ┃ ┣ 📜models.py  
- ┃ ┣ 📜tests.py  
- ┃ ┣ 📜urls.py  
- ┃ ┣ 📜views.py  
- ┃ ┗ 📜__init__.py  
- ┣ 📂blog  
- ┃ ┣ 📂migrations  
- ┃ ┣ 📂__pycache__  
- ┃ ┣ 📜admin.py  
- ┃ ┣ 📜apps.py  
- ┃ ┣ 📜forms.py  
- ┃ ┣ 📜models.py  
- ┃ ┣ 📜tests.py  
- ┃ ┣ 📜urls.py  
- ┃ ┣ 📜views.py  
- ┃ ┗ 📜__init__.py  
- ┣ 📂board  
- ┃ ┣ 📂migrations  
- ┃ ┣ 📂__pycache__  
- ┃ ┣ 📜admin.py  
- ┃ ┣ 📜apps.py  
- ┃ ┣ 📜forms.py  
- ┃ ┣ 📜models.py  
- ┃ ┣ 📜tests.py  
- ┃ ┣ 📜urls.py  
- ┃ ┣ 📜views.py  
- ┃ ┗ 📜__init__.py  
- ┣ 📂main  
- ┃ ┣ 📂migrations  
- ┃ ┣ 📂__pycache__  
- ┃ ┣ 📜admin.py  
- ┃ ┣ 📜apps.py  
- ┃ ┣ 📜models.py  
- ┃ ┣ 📜tests.py  
- ┃ ┣ 📜urls.py  
- ┃ ┣ 📜views.py  
- ┃ ┗ 📜__init__.py  
- ┣ 📂media  
- ┃ ┣ 📂accounts  
- ┃ ┣ 📂blog  
- ┃ ┗ 📂board  
- ┣ 📂static  
- ┃ ┣ 📂assets  
- ┃ ┃ ┣ 📂css  
- ┃ ┃ ┃ ┣ 📂apps  
- ┃ ┃ ┃ ┣ 📂authentication  
- ┃ ┃ ┃ ┣ 📂components  
- ┃ ┃ ┃ ┣ 📂dashboard  
- ┃ ┃ ┃ ┣ 📂elements  
- ┃ ┃ ┃ ┣ 📂forms  
- ┃ ┃ ┃ ┣ 📂pages  
- ┃ ┃ ┃ ┣ 📂tables  
- ┃ ┃ ┃ ┣ 📂users  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┃ ┣ 📂mockup_image  
- ┃ ┃ ┣ 📂img  
- ┃ ┃ ┗ 📂js  
- ┃ ┣ 📂bootstrap  
- ┃ ┃ ┣ 📂css  
- ┃ ┃ ┗ 📂js  
- ┃ ┗ 📂plugins  
- ┣ 📂tech_blog  
- ┃ ┣ 📂__pycache__  
- ┃ ┣ 📜.env  
- ┃ ┣ 📜asgi.py  
- ┃ ┣ 📜settings.py  
- ┃ ┣ 📜urls.py  
- ┃ ┣ 📜wsgi.py  
- ┃ ┗ 📜__init__.py  
- ┣ 📂templates  
- ┃ ┣ 📂accounts  
- ┃ ┃ ┣ 📜login.html  
- ┃ ┃ ┣ 📜password_change.html  
- ┃ ┃ ┣ 📜profile.html  
- ┃ ┃ ┣ 📜profile_edit.html  
- ┃ ┃ ┣ 📜signup.html  
- ┃ ┃ ┗ 📜user_list.html  
- ┃ ┣ 📂blog  
- ┃ ┃ ┣ 📜blog_base.html  
- ┃ ┃ ┣ 📜post_detail.html  
- ┃ ┃ ┣ 📜post_form.html  
- ┃ ┃ ┣ 📜post_list.html  
- ┃ ┃ ┗ 📜post_not_found.html  
- ┃ ┣ 📂board  
- ┃ ┃ ┣ 📜board_base.html  
- ┃ ┃ ┣ 📜board_post_detail.html  
- ┃ ┃ ┣ 📜board_post_form.html  
- ┃ ┃ ┗ 📜board_post_list.html  
- ┃ ┣ 📂main  
- ┃ ┃ ┗ 📜index.html  
- ┃ ┣ 📜404.html  
- ┃ ┗ 📜base.html  
- ┣ 📜CONVENTION.md  
- ┣ 📜db.sqlite3  
- ┣ 📜manage.py  
- ┣ 📜README.md  
- ┗ 📜requirements.txt  
+📦📦django-website
+ ┣ 📂accounts
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜views.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂blog
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜0001_initial.py
+ ┃ ┃ ┣ 📜0002_post_views.py
+ ┃ ┃ ┣ 📜0003_comment.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜views.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂media
+ ┃ ┗ 📂blog
+ ┃ ┃ ┣ 📂files
+ ┃ ┃ ┃ ┗ 📂2024
+ ┃ ┃ ┃ ┃ ┗ 📂03
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂12
+ ┃ ┃ ┗ 📂images
+ ┃ ┃ ┃ ┗ 📂2024
+ ┃ ┃ ┃ ┃ ┗ 📂03
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂12
+ ┣ 📂static
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📂img
+ ┃ ┃ ┃ ┣ 📜about-bg.jpg
+ ┃ ┃ ┃ ┣ 📜contact-bg.jpg
+ ┃ ┃ ┃ ┣ 📜home-bg.jpg
+ ┃ ┃ ┃ ┣ 📜post-bg.jpg
+ ┃ ┃ ┃ ┗ 📜post-sample-image.jpg
+ ┃ ┃ ┗ 📜favicon.ico
+ ┃ ┣ 📂css
+ ┃ ┃ ┗ 📜styles.css
+ ┃ ┗ 📂js
+ ┃ ┃ ┗ 📜scripts.js
+ ┣ 📂templates
+ ┃ ┣ 📂accounts
+ ┃ ┃ ┣ 📜login.html
+ ┃ ┃ ┗ 📜register.html
+ ┃ ┣ 📂blog
+ ┃ ┃ ┣ 📜index.html
+ ┃ ┃ ┣ 📜post_delete.html
+ ┃ ┃ ┣ 📜post_detail.html
+ ┃ ┃ ┣ 📜post_form.html
+ ┃ ┃ ┣ 📜post_list.html
+ ┃ ┃ ┗ 📜post_update_form.html
+ ┃ ┗ 📜base.html
+ ┣ 📂tutorial_django
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜settings.cpython-312.pyc
+ ┃ ┃ ┣ 📜urls.cpython-312.pyc
+ ┃ ┃ ┣ 📜wsgi.cpython-312.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-312.pyc
+ ┃ ┣ 📜asgi.py
+ ┃ ┣ 📜settings.py
+ ┃ ┣ 📜urls.py
+ ┃ ┣ 📜wsgi.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📜.gitignore
+ ┣ 📜db.sqlite3
+ ┣ 📜manage.py
+ ┗ 📜README.md 
 
 ### 4.1 개발 일정(WBS)
 * 아래 일정표는 머메이드로 작성했습니다.
@@ -314,13 +254,12 @@ gantt
     개발 환경 설정          :         dev1, 2024-03-09,1d
     section 프론트엔드
     페이지 레이아웃 구성    :         fe1, 2024-03-08,2d
-    동적 콘텐츠 렌더링      :         fe2, 2024-03-10,2d
-    사용자 인터랙션 추가    :         fe3, 2024-03-12,1d
+    사용자 인터랙션 추가    :         fe3, 2024-03-10,2d
     section 백엔드
     데이터 모델 구현        :         be1, 2024-03-09,1d
     Django 관리자 페이지 설정 :       be2, 2024-03-10,1d
     글 포스팅 및 수정 기능  :      be3, 2024-03-11,1d
-    블로그 기능 외 추가 기능 작성: be4, 2024-03-12,1d
+    블로그 기능 외 추가 기능 작성: be4, 2024-03-12,2d
     section 테스팅 및 디버깅
     단위 테스트 및 UX 테스트 :        test1, 2024-03-13,1d
     버그 수정 및 최적화     :         test2, 2024-03-13,1d
@@ -328,24 +267,6 @@ gantt
     문서화                  :         doc1, 2024-03-13,1d
     배포 설정 및 초기 배포  :         deploy1, 2024-03-13,1d
 ```
-
-* 아래 WBS는 엑셀을 이용했습니다. 양식은 [다운로드](./WBS_sample.xlsx) 받아 사용하세요. (출처 : https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/ExcelGeneral/204594/1/WBS_sample.xlsx)
-<img src="wbs_xlsx.png" width="80%">
-
-* 좀 더 가벼운 프로젝트는 아래 일정표를 사용하세요.
-* 아래 일정표는 [habitmaker.co.kr](https://habitmaker.co.kr) 에서 작성되었습니다.
-* 관련된 스택 표시는 [dev.habitmaker.co.kr](https://dev.habitmaker.co.kr) 에서 작성되었습니다.
-<img src="habit.jpg" width="50%">
-<img src="blob.png" width="50%">
-
-## 5. 역할 분담
-
-- 팀장 : 이호준
-- FE : 홍길동
-- FE : 홍길동
-- BE : 홍길동
-- BE : 홍길동
-- 디자인 : 홍길동
 
 ## 6. 와이어프레임 / UI / BM
 
