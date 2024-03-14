@@ -160,8 +160,8 @@
 
 ## 4. 프로젝트 구조와 개발 일정
 ### 4.1 프로젝트 구조
-- 해당 프로젝트에서 폴더 트리 잘 다듬어 사용하세요. 필요하다면 주석을 달아주세요.
-📦📦django-website
+```
+📦django-website
  ┣ 📂accounts
  ┃ ┣ 📂migrations
  ┃ ┃ ┣ 📂__pycache__
@@ -226,10 +226,6 @@
  ┃ ┗ 📜base.html
  ┣ 📂tutorial_django
  ┃ ┣ 📂__pycache__
- ┃ ┃ ┣ 📜settings.cpython-312.pyc
- ┃ ┃ ┣ 📜urls.cpython-312.pyc
- ┃ ┃ ┣ 📜wsgi.cpython-312.pyc
- ┃ ┃ ┗ 📜__init__.cpython-312.pyc
  ┃ ┣ 📜asgi.py
  ┃ ┣ 📜settings.py
  ┃ ┣ 📜urls.py
@@ -239,6 +235,7 @@
  ┣ 📜db.sqlite3
  ┣ 📜manage.py
  ┗ 📜README.md 
+ ```
 
 ### 4.1 개발 일정(WBS)
 * 아래 일정표는 머메이드로 작성했습니다.
